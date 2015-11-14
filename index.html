@@ -4,8 +4,238 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <title>安必录｜后视镜行车记录仪</title>
+        <link rel="stylesheet" href="./css/jquery.fullPage.css" type="text/css" media="all" />
+        <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+            Timer=0;
+            $(function(){
+
+                autoHeight();
+                $(window).resize(function(){
+                    clearTimeout(Timer);
+                    Timer=setTimeout(function(){
+                        autoHeight();
+                    },300)
+                });
+
+                var w = $(window).width();
+                
+                var mouse = true;
+
+                var wheel = function(event) {
+                    var delta = 0;
+                    if (!event)
+                    event = window.event;
+                    if (event.wheelDelta) {
+                    delta = event.wheelDelta / 120;
+                    } else if (event.detail) {
+                    delta = -event.detail / 3;
+                    }
+                    if (delta) handle(delta);
+                    if (event.preventDefault) event.preventDefault();
+                    event.returnValue = false;
+                }
+
+                if (window.addEventListener) window.addEventListener('DOMMouseScroll', wheel, false);
+
+                document.onmousewheel = wheel;
+
+                var $f = true;
+
+                var handle = function(delta) {
+                    if (!mouse) return;
+                    mouse = false;
+                    var random_num = Math.floor((Math.random() * 100) + 50);
+                    if (delta < 0) {
+                    PicWheelScroll(1);
+                    $f = false;
+                    //console.log("鼠标滑轮向下滚动：" + delta + "次！"); // 1  
+                    return false;
+                    } else {
+                    $f = true;
+                    PicWheelScroll(0);
+                    //console.log("鼠标滑轮向上滚动：" + delta + "次！"); // -1  
+                    return false;
+                    }
+                }
+                $(".ac").each(function(i) {
+                    $(this).click(function() {
+                    $(".ac").removeClass("active");
+                    $(".ac").eq(i).addClass("active");
+
+                    var num = i + 1;
+                    gotoAnchor($(".dom" + num));
+                    getAnchroFun(num);
+
+                    })
+                })
+
+
+                var PicWheelScroll = function(n) {
+                    var num = $("#main_guide").attr("num");
+                    if ((num === 4 && n === 1) || (num === 1 && n === 0)) return;
+                    if (n == 1) {
+                    if (num < 4) num++;
+                    } else {
+                    if (num > 1) num--;
+                    }
+                    if (num == 4){
+                    //$('#nag').hide();	
+                    }else{
+                    $('#nag').show();	
+                    }
+                    
+                    $(".ac").removeClass("active");
+                    $(".ac").eq(num - 1).addClass("active");
+
+                    gotoAnchor($(".dom" + num));
+                    getAnchroFun(num);
+                }
+
+
+                var getAnchroFun = function(num) {
+                    var h = $(window).height();
+                    var h = (h - 500 < 30 ? 30 : h - 580) + "px";
+                    var n = $("#main_guide").attr("num");
+                    $("#main_guide").attr("num", num);
+                }
+
+
+                    var gotoAnchor = function(selector) {
+                    var anchor = $(selector);
+                    if (anchor.length < 0) return;
+
+                    var iee=$(window.document.documentElement)[0]+"";
+                    var $body;
+                    //alert(iee);
+                    if(iee=="[object]"){
+                        $body = $(window.document.documentElement);
+                    
+                    }else{
+                        $body = $(window.document.body);
+                        if(navigator.userAgent.indexOf("MSIE 8.0")>0  || navigator.userAgent.indexOf("MSIE 9.0")>0)  
+                        {  
+                            $body = $(window.document.documentElement);
+                        }
+                    }
+                    
+                    var pos = anchor.offset();
+                    $body.animate({
+                        "scrollTop": pos.top
+                        }, {
+                        queue: false,
+                        complete: function() {
+                        mouse = true;
+                        }
+                        });
+                    
+                }
+                gotoAnchor($(".dom1"));
+                //gotoAnchor($(".dom1"));
+
+
+            });
+
+//初始化结束
+
+            function autoHeight(){
+                var h = $(window).height();
+                var widthn=$(window).width()/1920;
+                if(navigator.userAgent.indexOf("MSIE 8.0")>0 || navigator.userAgent.indexOf("MSIE 7.0")>0  || navigator.userAgent.indexOf("MSIE 9.0")>0)  {
+                    $(".back").css("height", 900 + "px");
+                    $(".dom4").css("height", 380*widthn + "px");
+                }else{
+                    $(".back").css("height", h + "px");
+                    $(".dom4").css("height", 380*widthn + "px");
+                    $("body").css("overflow","hidden");
+                }
+                //var str1=h/900;
+                //zoom(".area" ,str1);
+                
+            };
+
+//定义autoHeight();
+
+            $(function(){
+                var widthn=$(window).width()/1920;
+                dom1(widthn);
+                dom2(widthn);
+                dom3(widthn);
+                dom4(widthn);
+                dom5(widthn);
+                dom6(widthn);
+            });
+            $(window).resize(function(){
+                var widthn=$(window).width()/1920;
+                dom1(widthn);
+                dom2(widthn);
+                dom3(widthn);
+                dom4(widthn);
+                dom5(widthn);
+                dom6(widthn);
+            });
+            function dom1(n){
+                var ml=($(window).width()-1014*n)/2;
+                var mt=($(window).height()-480*n)/2;
+                $(".dom1").find("img").css("width",1014*n).css("margin-left",ml).css("margin-top",mt);
+            }
+            function dom2(n){
+                $(".dom2_pic1").css("width",924*n).css("bottom",50*n);
+                $(".dom2_pic2").css("width",424*n).css("top",250*n).css("right",300*n);
+                $(".dom2_pic3").css("width",622*n).css("bottom",50*n).css("right",250*n);
+            }
+            function dom3(n){
+                var ml=($(window).width()-1348*n)/2;
+                var mt=($(window).height()-1024*n)/2;
+                $(".dom3_pic1").css("width",1348*n).css("margin-left",ml).css("margin-top",mt).css("z-index",100);
+                $(".dom3_pic2").css("width",1920*n).css("bottom", 100*n).css("z-index",-1);
+            }
+            function dom4(n){
+                var ml=($(window).width()-1448*n)/2;
+                var mt=($(window).height()-1024*n)/2;
+                $(".dom6_pic1").css("width",1448*n).css("margin-left",ml).css("margin-top",mt).css("z-index",100);
+            }
+        </script>
     </head>
     <body>
-        <h1>测试服务</h1>
+        <div class="head">
+            <img src="images/logo.jpg" class="logo" height="60">
+            <ul class="nag" id="nag" style="display:block;">
+                <!-- <li class="ac active"><span><img src="images/head_pic1.png" alt="主页"></span></li> -->
+                <!-- <li class="ac" style="position:absolute;bottom:-2px;height:0px;right:108px;display:none;"><span></span></li> -->
+                <!-- <li class="ac" style="position:absolute;bottom:-2px;height:0px;right:108px;display:none;"><span></span></li> -->
+                <!-- <li class="ac" style="position:absolute;bottom:-2px;height:0px;right:108px;display:none;"><span></span></li> -->
+                <!-- <li class="ac" style="z-index:100;"><span><img src="images/head_pic2.png" alt="灵盾3.0"></span></li> -->
+                <!-- <li class="ac"><span><img src="images/head_pic3.png" alt="联系我们"></span></li> -->
+            </ul>
+        </div>
+        <div id="main_guide" num="1">
+            <div class="back dom1" id="J-1">
+                <div class="area" style="">
+                    <div class="cnt">
+                        <span><img src="images/dom1_pic1.png" style="width:1024px;" alt="有闻必录"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="back dom2" id="J-2">
+                <div class="area" style="">
+                </div>
+            </div>
+            <div class="back dom3" id="J-3">
+                <div class="area" style="">
+                    <div class="cnt">
+                        <span>
+                            <img src="images/dom3_pic1.png" class="dom3_pic1">
+                        </span>
+                    </div>
+                    <img src="./images/dom3_pic2.png" class="dom3_pic2" />
+                </div>
+            </div>
+            <div class="back dom4"  id="J-4">
+                <div class="area" style="">
+                    <img src="images/dom6_pic1.png" class="dom6_pic1">
+                </div>
+            </div>
+        </div>
     </body>
 </html>
