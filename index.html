@@ -19,7 +19,7 @@
                 });
 
                 var w = $(window).width();
-                
+
                 var mouse = true;
 
                 var wheel = function(event) {
@@ -73,13 +73,13 @@
 
                 var PicWheelScroll = function(n) {
                     var num = $("#main_guide").attr("num");
-                    if ((num === 5 && n === 1) || (num === 1 && n === 0)) return;
+                    if ((num === 11 && n === 1) || (num === 1 && n === 0)) return;
                     if (n == 1) {
-                    if (num < 5) num++;
+                    if (num < 11) num++;
                     } else {
                     if (num > 1) num--;
                     }
-                    if (num == 5){
+                    if (num == 11){
                     //$('#nag').hide();	
                     }else{
                     $('#nag').show();	
@@ -143,10 +143,10 @@
                 var widthn=$(window).width()/1920;
                 if(navigator.userAgent.indexOf("MSIE 8.0")>0 || navigator.userAgent.indexOf("MSIE 7.0")>0  || navigator.userAgent.indexOf("MSIE 9.0")>0)  {
                     $(".back").css("height", 900 + "px");
-                    $(".dom5").css("height", 380*widthn + "px");
+                    $(".dom11").css("height", 380*widthn + "px");
                 }else{
                     $(".back").css("height", h + "px");
-                    $(".dom5").css("height", 380*widthn + "px");
+                    $(".dom11").css("height", 380*widthn + "px");
                     $("body").css("overflow","hidden");
                 }
                 //var str1=h/900;
@@ -164,6 +164,11 @@
                 dom4(widthn);
                 dom5(widthn);
                 dom6(widthn);
+                dom7(widthn);
+                dom8(widthn);
+                dom9(widthn);
+                dom10(widthn);
+                dom11(widthn);
             });
             $(window).resize(function(){
                 var widthn=$(window).width()/1920;
@@ -173,6 +178,11 @@
                 dom4(widthn);
                 dom5(widthn);
                 dom6(widthn);
+                dom7(widthn);
+                dom8(widthn);
+                dom9(widthn);
+                dom10(widthn);
+                dom11(widthn);
             });
             function dom1(n){
                 var ml=($(window).width()-1560*n)/2;
@@ -195,15 +205,46 @@
                 $(".dom4_pic1").css("width",1520*n).css("margin-left",ml).css("margin-top",mt);
             }
             function dom5(n){
+                var ml=($(window).width()-1560*n)/2;
+                var mt=($(window).height()-860*n)/2;
+                $(".dom5").find("img").css("width",1560*n).css("margin-left",ml).css("margin-top",mt);
+            }
+            function dom6(n){
+                var ml=($(window).width()-1560*n)/2;
+                var mt=($(window).height()-860*n)/2;
+                $(".dom6").find("img").css("width",1560*n).css("margin-left",ml).css("margin-top",mt);
+            }
+            function dom7(n){
+                var ml=($(window).width()-1560*n)/2;
+                var mt=($(window).height()-860*n)/2;
+                $(".dom7").find("img").css("width",1560*n).css("margin-left",ml).css("margin-top",mt);
+            }
+            function dom8(n){
+                var ml=($(window).width()-1560*n)/2;
+                var mt=($(window).height()-860*n)/2;
+                $(".dom8").find("img").css("width",1560*n).css("margin-left",ml).css("margin-top",mt);
+            }
+            function dom9(n){
+                var ml=($(window).width()-1560*n)/2;
+                var mt=($(window).height()-860*n)/2;
+                $(".dom9").find("img").css("width",1560*n).css("margin-left",ml).css("margin-top",mt);
+            }
+            function dom10(n){
+                var ml=($(window).width()-1560*n)/2;
+                var mt=($(window).height()-860*n)/2;
+                $(".dom10").find("img").css("width",1560*n).css("margin-left",ml).css("margin-top",mt);
+            }
+            function dom11(n){
                 var ml=($(window).width()-1448*n)/2;
                 var mt=($(window).height()-1024*n)/2;
-                $(".dom6_pic1").css("width",1448*n).css("margin-left",ml).css("margin-top",mt).css("z-index",100);
+                $(".dom11_pic1").css("width",1448*n).css("margin-left",ml).css("margin-top",mt).css("z-index",100);
             }
         </script>
     </head>
     <body>
         <div class="head">
-            <img src="images/logo.png" class="logo" height="60">
+            <img src="images/logo.png" class="logo" height="80" alt="深圳市美百佳科技有限公司">
+            <h2>深圳市美百佳科技有限公司</h2>
             <ul class="nag" id="nag" style="display:block;">
                 <!-- <li class="ac active"><span><img src="images/head_pic1.png" alt="主页"></span></li> -->
                 <!-- <li class="ac" style="position:absolute;bottom:-2px;height:0px;right:108px;display:none;"><span></span></li> -->
@@ -225,7 +266,7 @@
                 <div class="area" style="">
                     <div class="cnt">
                         <span>
-                            <img src="images/dom2_pic1.png" alt="" class="dom2_pic1" />
+                            <img src="images/focus2.png" alt="" class="dom2_pic1" />
                         </span>
                     </div>
                 </div>
@@ -234,7 +275,7 @@
                 <div class="area" style="">
                     <div class="cnt">
                         <span>
-                            <img src="images/dom3_pic1.png" class="dom3_pic1">
+                            <img src="images/focus3.png" class="dom3_pic1">
                         </span>
                     </div>
                     <!-- <img src="./images/dom3_pic2.png" class="dom3_pic2" /> -->
@@ -244,15 +285,69 @@
                 <div class="area" style="">
                     <div class="cnt">
                         <span>
-                            <img src="images/dom4_pic1.png" class="dom4_pic1">
+                            <img src="images/focus4.png" class="dom4_pic1">
                         </span>
                     </div>
                     <!-- <img src="./images/dom3_pic2.png" class="dom3_pic2" /> -->
                 </div>
             </div>
-            <div class="back dom5"  id="J-4">
+            <div class="back dom5" id="J-5">
                 <div class="area" style="">
-                    <img src="images/dom6_pic1.png" class="dom6_pic1">
+                    <div class="cnt">
+                        <span>
+                            <img src="images/focus5.png" class="dom4_pic1">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="back dom6" id="J-6">
+                <div class="area" style="">
+                    <div class="cnt">
+                        <span>
+                            <img src="images/focus6.png" class="dom4_pic1">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="back dom7" id="J-7">
+                <div class="area" style="">
+                    <div class="cnt">
+                        <span>
+                            <img src="images/focus7.png" class="dom4_pic1">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="back dom8" id="J-8">
+                <div class="area" style="">
+                    <div class="cnt">
+                        <span>
+                            <img src="images/focus8.png" class="dom4_pic1">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="back dom9" id="J-9">
+                <div class="area" style="">
+                    <div class="cnt">
+                        <span>
+                            <img src="images/focus9.png" class="dom4_pic1">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="back dom10" id="J-10">
+                <div class="area" style="">
+                    <div class="cnt">
+                        <span>
+                            <img src="images/focus10.png" class="dom4_pic1">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="back dom11"  id="J-11">
+                <div class="area" style="">
+                    <img src="images/dom6_pic1.png" class="dom11_pic1">
                 </div>
             </div>
         </div>

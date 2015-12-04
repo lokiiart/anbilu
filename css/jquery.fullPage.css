@@ -40,6 +40,7 @@ body{padding:0;margin:0;background-color:#000;}
 
 .head{position:fixed;left:0;top:0;height:70px;background:#fff;width:100%;z-index:100;}
 .head img.logo{position:absolute;left:20px;top:5px;}
+.head h2{position:absolute; margin:auto; left:0;right:0;top:0; bottom:0;height:50%; width:30%}
 .head .nag{position:absolute;right:10px;top:0;margin:0;}
 .nag li{list-style:none;height:68px;line-height:68px;text-align:center;display:inline-block;}
 .nag li{width:100px;display:inline-block;}
